@@ -1,5 +1,9 @@
-Role Name
+ansible-lighthouse
 =========
+![GitHub tag (latest by date)](https://img.shields.io/badge/tag-1.0.0-blue)
+[![Ansible Galaxy Lighthouse](https://img.shields.io/badge/role-AlexeyD3.lighthouse-blue.svg)](https://galaxy.ansible.com/AlexeyD3/lighthouse/)
+[![Ansible Galaxy Clickhouse](https://img.shields.io/badge/role-AlexeyD3.clickhouse-yellow.svg)](https://galaxy.ansible.com/AlexeyD3/clickhouse/)
+[![Ansible Galaxy Vector](https://img.shields.io/badge/role-AlexeyD3.vector-yellow.svg)](https://galaxy.ansible.com/AlexeyD3/vector/)
 
 Роль для установки lighthouse.
 - Устновка Git
@@ -8,14 +12,12 @@ Role Name
 
 Requirements
 ------------
-
 - Должен быть установлен git. Если его нет, роль произведёт его установку
 - Требуется отдельная установка и настройка Nginx
 
 Role Variables
 --------------
-
-Переменные для установки кредов
+Переменные для установки
 default/main.yml:
 ```yaml
 clickhouse_user: netology
@@ -32,21 +34,17 @@ lighthouse_access_log_name: lighthouse_access
 
 Dependencies
 ------------
-
-Требуется роль [clickhouse-role](https://github.com/danilabar/clickhouse-role)
+Требуется роль [clickhouse-role](https://github.com/AlexeyD3/clickhouse-role)
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
 ```yaml
 hosts: lighthouse
 roles:
   - role: lighthouse-role
 ```
 
-Для вывода строки подключения можно использовать post_tasks
+Для вывода строки подключения к web-интерфейсу используется post_tasks:
 
 ```yaml
 post_tasks:
@@ -55,10 +53,6 @@ post_tasks:
       msg: "http://{{ ansible_host }}/#http://{{ hostvars['clickhouse-01'].ansible_host }}:8123/?user={{ clickhouse_user }}"
 ```
 
-License
--------
-
-MIT
-
 Author Information
 ------------------
+Alexey Dubrovin
